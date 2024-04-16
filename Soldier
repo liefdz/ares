@@ -1,0 +1,416 @@
+// Package: ReS_PawnSoldier
+
+#include "Basic.hpp"
+
+#include "Cv2_WeaponsEnum_structs.hpp"
+#include "Cv2_WeaponsTypeEnum_structs.hpp"
+#include "MA_StructureModsWeapons_structs.hpp"
+#include "CoreUObject_structs.hpp"
+#include "SkeletalMeshMerger_structs.hpp"
+#include "Engine_structs.hpp"
+#include "Engine_classes.hpp"
+#include "MA_StructureCharacterCustomize_structs.hpp"
+#include "ReS_EnumBehaviorStates_structs.hpp"
+#include "TCR_StructureWeapon_structs.hpp"
+#include "TCR_EnumDayPeriods_structs.hpp"
+
+
+namespace SDK
+{
+
+// BlueprintGeneratedClass ReS_PawnSoldier.ReS_PawnSoldier_C
+// 0x04A0 (0x0720 - 0x0280)
+class AReS_PawnSoldier_C final : public APawn
+{
+public:
+	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0280(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
+	class UAC_EquipmentWeapons_C*                 AC_EquipmentWeapons;                               // 0x0288(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Weapon_RPG;                                        // 0x0290(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Shoes;                                       // 0x0298(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Armor;                                       // 0x02A0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Jacket;                                      // 0x02A8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Balaclava;                                   // 0x02B0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Pockets;                                     // 0x02B8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UChildActorComponent*                   MA_WeaponBaseActor;                                // 0x02C0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Pants;                                       // 0x02C8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponent*                 Rebel_Helmet;                                      // 0x02D0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USkeletalMeshComponentBudgeted*         Mesh;                                              // 0x02D8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCv2_WeaponsComponent1_C*               Cv2_WeaponsComponent1;                             // 0x02E0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCv2_CharacterHelpComponent_C*          Cv2_CharacterHelpComponent;                        // 0x02E8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UPawnSensingComponent*                  PawnSensing;                                       // 0x02F0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCv2_CharacterComponent_C*              Cv2_CharacterComponent;                            // 0x02F8(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UCv4_BulletComponent_C*                 Cv4_BulletComponent;                               // 0x0300(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class USceneComponent*                        Scene;                                             // 0x0308(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UFloatingPawnMovement*                  FloatingPawnMovement;                              // 0x0310(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class AReS_AIController_C*                    AIController;                                      // 0x0318(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                OldPosition;                                       // 0x0320(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Speed;                                             // 0x032C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UMilitaryCharacterAnimator_C*           AnimInstance;                                      // 0x0330(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         HeadArmor;                                         // 0x0338(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   ImpactBoneName;                                    // 0x033C(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                ImpactLocation;                                    // 0x0344(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                ImpactImpulse;                                     // 0x0350(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector_NetQuantize                    DamageLocation;                                    // 0x035C(0x000C)(Edit, BlueprintVisible, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
+	TArray<class UDecalComponent*>                BloodDecalsArray;                                  // 0x0368(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance, ContainsInstancedReference)
+	bool                                          IsDead;                                            // 0x0378(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor)
+	uint8                                         Pad_39F8[0x3];                                     // 0x0379(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         ArmorCoef;                                         // 0x037C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AController*                            DamageInstigatedBy;                                // 0x0380(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         HitPoints;                                         // 0x0388(0x0004)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_39F9[0x4];                                     // 0x038C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  KillerPawn;                                        // 0x0390(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   ClanName;                                          // 0x0398(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FMA_StructureCharacterCustomize        CharacterSkin;                                     // 0x03A0(0x0040)(Edit, BlueprintVisible, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsAim;                                             // 0x03E0(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor)
+	ECv2_WeaponsEnum                              RealWeapon;                                        // 0x03E1(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          DisableFire;                                       // 0x03E2(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39FA[0x5];                                     // 0x03E3(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<class APawn*>                          SeePawns;                                          // 0x03E8(0x0010)(Edit, BlueprintVisible, DisableEditOnTemplate)
+	class APawn*                                  ProxyPawn;                                         // 0x03F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class APawn*                                  TargetPawn;                                        // 0x0400(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         StateSide;                                         // 0x0408(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_39FB[0x4];                                     // 0x040C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  EnemyTarget;                                       // 0x0410(0x0008)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsCrouch;                                          // 0x0418(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor)
+	bool                                          IsProne;                                           // 0x0419(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor)
+	uint8                                         Pad_39FC[0x2];                                     // 0x041A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Weapon_NoAttackTimer;                              // 0x041C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Weapon_Range;                                      // 0x0420(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          Weapon_isFiring;                                   // 0x0424(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39FD[0x3];                                     // 0x0425(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Weapon_CurrentBurstCount;                          // 0x0428(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Weapon_lastShoot;                                  // 0x042C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         OldWeaponFireRate;                                 // 0x0430(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_39FE[0x4];                                     // 0x0434(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  ProxyPawnSensing;                                  // 0x0438(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AReS_Squad_C*                           MySquad;                                           // 0x0440(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          FinalRotation;                                     // 0x0448(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_39FF[0x3];                                     // 0x0449(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         NetYaw;                                            // 0x044C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class UAnimMontage*                           TurnMontage;                                       // 0x0450(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         NetPitch;                                          // 0x0458(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Ammo;                                              // 0x045C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FMA_StructureModsWeapons               WeaponMods;                                        // 0x0460(0x0028)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FVector                                MoveToLocation;                                    // 0x0488(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RagdollGrenade;                                    // 0x0494(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor)
+	bool                                          IsSprint;                                          // 0x0495(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor)
+	uint8                                         Pad_3A00[0x2];                                     // 0x0496(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         Rank;                                              // 0x0498(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DisableMoveTimer;                                  // 0x049C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class AReS_AI_DefendPoint_C*                  DefendPoint;                                       // 0x04A0(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CoverL;                                            // 0x04A8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          CoverR;                                            // 0x04A9(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A01[0x2];                                     // 0x04AA(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         FireBurstSpread;                                   // 0x04AC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	EReS_EnumBehaviorStates                       SoldierBehaviorState;                              // 0x04B0(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, IsPlainOldData, RepNotify, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3A02[0x3];                                     // 0x04B1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FVector                                OldHitLocation;                                    // 0x04B4(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         SkillReactionMultiplayer;                          // 0x04C0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          UnitIsMoved;                                       // 0x04C4(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A03[0x3];                                     // 0x04C5(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         VisionDistance_Weather;                            // 0x04C8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         Alarm;                                             // 0x04CC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CustomPose;                                        // 0x04D0(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A04[0x3];                                     // 0x04D1(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         Skill_Accuracy;                                    // 0x04D4(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsRendered_;                                       // 0x04D8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A05[0x3];                                     // 0x04D9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRotator                               LockBotRotation;                                   // 0x04DC(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          InVehicle;                                         // 0x04E8(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A06[0x3];                                     // 0x04E9(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         VehiclePosID;                                      // 0x04EC(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         VehicleID;                                         // 0x04F0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3A07[0x4];                                     // 0x04F4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class AFourWD_BP_C*                           Vehicle;                                           // 0x04F8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InVehicleFire;                                     // 0x0500(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A08[0x7];                                     // 0x0501(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
+	class UObject*                                MachineGun;                                        // 0x0508(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InMachineGun;                                      // 0x0510(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	ECv2_WeaponsEnum                              OldWeapon;                                         // 0x0511(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	ECv2_WeaponsEnum                              RocketLauncherWeapon;                              // 0x0512(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3A09[0x1];                                     // 0x0513(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         RocketLauncherAmmo;                                // 0x0514(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   FullName;                                          // 0x0518(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         SpeakPitch;                                        // 0x0520(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3A0A[0x4];                                     // 0x0524(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class ACv2_Character_C*                       FollowPlayerPawn;                                  // 0x0528(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          DisableProne;                                      // 0x0530(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          HandsUp;                                           // 0x0531(0x0001)(Edit, BlueprintVisible, Net, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, RepNotify, NoDestructor)
+	uint8                                         Pad_3A0B[0x2];                                     // 0x0532(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class FName                                   BotGrenadeName;                                    // 0x0534(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         BotGrenadeCount;                                   // 0x053C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         DistanceToTargetPawn;                              // 0x0540(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	uint8                                         Pad_3A0C[0x4];                                     // 0x0544(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class APawn*                                  LastEnemyTarget;                                   // 0x0548(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InDefendPosition;                                  // 0x0550(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A0D[0x3];                                     // 0x0551(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         AmmoCargo;                                         // 0x0554(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FSkeletalMeshMergeParams               MergeMesh;                                         // 0x0558(0x0040)(Edit, BlueprintVisible, DisableEditOnInstance)
+	uint8                                         Pad_3A0E[0x8];                                     // 0x0598(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTransform                             BackPackWeaponSocket;                              // 0x05A0(0x0030)(Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	struct FTransform                             WeaponSocket;                                      // 0x05D0(0x0030)(Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	struct FMA_StructureModsWeapons               OldWeaponMods;                                     // 0x0600(0x0028)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          OffLOD;                                            // 0x0628(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          InDefendPositionCover;                             // 0x0629(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A0F[0x2];                                     // 0x062A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FRotator                               OldMoveUnitRotation;                               // 0x062C(0x000C)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          ReverseMove;                                       // 0x0638(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          CoverStandL;                                       // 0x0639(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          CoverStandR;                                       // 0x063A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A10[0x5];                                     // 0x063B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAnimMontage*                           IdleRandomMontage;                                 // 0x0640(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class ATCR_ActorDefendHousePoint_C*           HouseDefendActor;                                  // 0x0648(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          CustomDisableFire;                                 // 0x0650(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          OffLOD_Long;                                       // 0x0651(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A11[0x2];                                     // 0x0652(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         LodInteger;                                        // 0x0654(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          IsSpecOps;                                         // 0x0658(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          IsSwimm;                                           // 0x0659(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A12[0x2];                                     // 0x065A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         LastAnimMontageTime;                               // 0x065C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	class FName                                   Scenario;                                          // 0x0660(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	int32                                         VoiceID;                                           // 0x0668(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          InHouse;                                           // 0x066C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A13[0x3];                                     // 0x066D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FTCR_StructureWeapon                   Secundary_Weapon;                                  // 0x0670(0x0034)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTCR_StructureWeapon                   Primary_Weapon;                                    // 0x06A4(0x0034)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FTCR_StructureWeapon                   RocketLauncher;                                    // 0x06D8(0x0034)(Edit, BlueprintVisible, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          RagDoll_On;                                        // 0x070C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	bool                                          bKilledInFlight;                                   // 0x070D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor)
+	uint8                                         Pad_3A14[0x2];                                     // 0x070E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAC_PawnFlightController_C*             FlightControllerComponent;                         // 0x0710(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	float                                         Soldier_MaxSpeed_Bonus;                            // 0x0718(0x0004)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+public:
+	void ExecuteUbergraph_ReS_PawnSoldier(int32 EntryPoint);
+	void BndEvt__ReS_PawnSoldier_Cv2_CharacterHelpComponent_K2Node_ComponentBoundEvent_3_OnRagdollDeactivated__DelegateSignature();
+	void BndEvt__ReS_PawnSoldier_Cv2_CharacterHelpComponent_K2Node_ComponentBoundEvent_1_OnRagdollActivated__DelegateSignature();
+	void SetFlightControllerComponent(class UActorComponent* Component);
+	void UpdateRotation();
+	void SetFlyingSettings();
+	void SetWalkingSettings();
+	void ZAPUSTIT_BOTA();
+	void BndEvt__ReS_PawnSoldier_AC_EquipmentWeapons_K2Node_ComponentBoundEvent_2_OnWeaponDataEquipped__DelegateSignature(const struct FTCR_StructureWeapon& WeaponData);
+	void ReceiveBeginPlay();
+	void UpdateChar();
+	void RandomSprint();
+	void CreateBloodEffect(class FName BoneName, const struct FVector_NetQuantize100& Impulse, const struct FVector_NetQuantize10& Normal, const struct FVector_NetQuantize10& Location);
+	void MoveToTimer();
+	void ReceiveTick(float DeltaSeconds);
+	void CustomMoveToStart();
+	void SetWeapon(ECv2_WeaponsEnum RandomWeapon, const struct FMA_StructureModsWeapons& CustomWeaponsMods, bool bSetAmmoFromDT);
+	void BndEvt__PawnSensing_K2Node_ComponentBoundEvent_0_SeePawnDelegate__DelegateSignature(class APawn* Pawn);
+	void ReceiveAnyDamage(float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, class AActor* DamageCauser);
+	void UserConstructionScript();
+	void CheckSpeed();
+	void RandomPatrool(float Radius, const struct FVector& Location);
+	void OnRep_isDead();
+	void PoseDead();
+	void OnRep_CharacterSkin();
+	void OnRep_HitPoints();
+	void OnRep_isAim();
+	void CheckSeePawns();
+	void CheckVisibleSense(class APawn* Object, bool* NoSee);
+	void StartFireAndBurstCount();
+	void CheckFire();
+	void Fire_Weapon_and_Reloading();
+	void OnRep_isCrouch();
+	void OnRep_isProne();
+	void CheckSpeedCharacter();
+	void Reloading();
+	void OnRep_RagdollGrenade();
+	void OnRep_isSprint();
+	void SetSelectedUnit(bool bValue);
+	void RandomCharPose();
+	void StandUp();
+	void FindDefendPoint();
+	void Cover();
+	void ClearDefendPoint();
+	void OnRep_BehaviorState();
+	void SetBehaviorState(EReS_EnumBehaviorStates BehaviorState);
+	void PoseStand();
+	void PoseCrouch();
+	void PoseProne();
+	void Move_to_Vehicle();
+	void Show_RPG_Rocket();
+	void SwitchWeaponRPG();
+	void SwitchWeaponPrimary();
+	void SetWeaponRPG();
+	void SetWeaponPrimary();
+	void SetAnimInstanceWeaponType();
+	void UpdateSoldier_10sec();
+	void Remove_Vehicle();
+	void OnRep_HandsUp();
+	void SetHandsUp();
+	void StartThrowGrenade();
+	void ThrowGrenade();
+	void CustomEventDamage(float Damage, const class UDamageType* DamageType, class AController* InsigatedBy, class AActor* DamageCauser);
+	void MergeCharacter();
+	void Off_Vehicle_Physic();
+	void Set_Last_Shoot_Off();
+	void Set_Behavior_State_Attack();
+	void Update_Patrol_Animations();
+	void SetSwimming();
+	void Set_Optimize_Lod_Sys();
+	void Play_Montage(class UAnimMontage* Param_IdleRandomMontage);
+	void Set_Enemy_Render_Depth(bool bValue);
+	void Set_Ally_Render_Depth(bool bValue);
+	void SwitchWeaponSecundary();
+	void SetWeaponSecundary();
+	void EquipWeapons(const struct FTCR_StructureWeapon& PrimaryWeapon, const struct FTCR_StructureWeapon& SecondaryWeapon, const struct FTCR_StructureWeapon& Param_RocketLauncher);
+	void AddWeapon(struct FTCR_StructureWeapon& NewWeaponData, TArray<struct FTCR_StructureWeapon>& SourceWeaponsData);
+	void GetCurrentAmmo(int32* AmmoMagazine, int32* AmmoBackPack);
+	void SetEquipmentVisibility(bool bVisible);
+	int32 GetStateSide();
+	void SetStateKills(int32 Kill, bool* bSuccess);
+	int32 GetStateKills();
+	void OnHarmCausing(class AActor* DamagedActor, const class UDamageType* DamageType, bool* bSuccess);
+	int32 GetBackpackAmmo();
+	int32 GetMagazineAmmo();
+
+	class APawn* GetControlledPlayerPawn() const;
+	void IsFlying(bool* bReturnValue) const;
+
+public:
+	static class UClass* StaticClass()
+	{
+		return StaticBPGeneratedClassImpl<"ReS_PawnSoldier_C">();
+	}
+	static class AReS_PawnSoldier_C* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<AReS_PawnSoldier_C>();
+	}
+};
+static_assert(alignof(AReS_PawnSoldier_C) == 0x000010, "Wrong alignment on AReS_PawnSoldier_C");
+static_assert(sizeof(AReS_PawnSoldier_C) == 0x000720, "Wrong size on AReS_PawnSoldier_C");
+static_assert(offsetof(AReS_PawnSoldier_C, UberGraphFrame) == 0x000280, "Member 'AReS_PawnSoldier_C::UberGraphFrame' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, AC_EquipmentWeapons) == 0x000288, "Member 'AReS_PawnSoldier_C::AC_EquipmentWeapons' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Weapon_RPG) == 0x000290, "Member 'AReS_PawnSoldier_C::Weapon_RPG' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Shoes) == 0x000298, "Member 'AReS_PawnSoldier_C::Rebel_Shoes' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Armor) == 0x0002A0, "Member 'AReS_PawnSoldier_C::Rebel_Armor' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Jacket) == 0x0002A8, "Member 'AReS_PawnSoldier_C::Rebel_Jacket' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Balaclava) == 0x0002B0, "Member 'AReS_PawnSoldier_C::Rebel_Balaclava' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Pockets) == 0x0002B8, "Member 'AReS_PawnSoldier_C::Rebel_Pockets' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, MA_WeaponBaseActor) == 0x0002C0, "Member 'AReS_PawnSoldier_C::MA_WeaponBaseActor' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Pants) == 0x0002C8, "Member 'AReS_PawnSoldier_C::Rebel_Pants' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rebel_Helmet) == 0x0002D0, "Member 'AReS_PawnSoldier_C::Rebel_Helmet' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Mesh) == 0x0002D8, "Member 'AReS_PawnSoldier_C::Mesh' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Cv2_WeaponsComponent1) == 0x0002E0, "Member 'AReS_PawnSoldier_C::Cv2_WeaponsComponent1' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Cv2_CharacterHelpComponent) == 0x0002E8, "Member 'AReS_PawnSoldier_C::Cv2_CharacterHelpComponent' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, PawnSensing) == 0x0002F0, "Member 'AReS_PawnSoldier_C::PawnSensing' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Cv2_CharacterComponent) == 0x0002F8, "Member 'AReS_PawnSoldier_C::Cv2_CharacterComponent' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Cv4_BulletComponent) == 0x000300, "Member 'AReS_PawnSoldier_C::Cv4_BulletComponent' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Scene) == 0x000308, "Member 'AReS_PawnSoldier_C::Scene' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, FloatingPawnMovement) == 0x000310, "Member 'AReS_PawnSoldier_C::FloatingPawnMovement' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, AIController) == 0x000318, "Member 'AReS_PawnSoldier_C::AIController' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OldPosition) == 0x000320, "Member 'AReS_PawnSoldier_C::OldPosition' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Speed) == 0x00032C, "Member 'AReS_PawnSoldier_C::Speed' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, AnimInstance) == 0x000330, "Member 'AReS_PawnSoldier_C::AnimInstance' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, HeadArmor) == 0x000338, "Member 'AReS_PawnSoldier_C::HeadArmor' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ImpactBoneName) == 0x00033C, "Member 'AReS_PawnSoldier_C::ImpactBoneName' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ImpactLocation) == 0x000344, "Member 'AReS_PawnSoldier_C::ImpactLocation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ImpactImpulse) == 0x000350, "Member 'AReS_PawnSoldier_C::ImpactImpulse' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DamageLocation) == 0x00035C, "Member 'AReS_PawnSoldier_C::DamageLocation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, BloodDecalsArray) == 0x000368, "Member 'AReS_PawnSoldier_C::BloodDecalsArray' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsDead) == 0x000378, "Member 'AReS_PawnSoldier_C::IsDead' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ArmorCoef) == 0x00037C, "Member 'AReS_PawnSoldier_C::ArmorCoef' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DamageInstigatedBy) == 0x000380, "Member 'AReS_PawnSoldier_C::DamageInstigatedBy' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, HitPoints) == 0x000388, "Member 'AReS_PawnSoldier_C::HitPoints' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, KillerPawn) == 0x000390, "Member 'AReS_PawnSoldier_C::KillerPawn' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ClanName) == 0x000398, "Member 'AReS_PawnSoldier_C::ClanName' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CharacterSkin) == 0x0003A0, "Member 'AReS_PawnSoldier_C::CharacterSkin' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsAim) == 0x0003E0, "Member 'AReS_PawnSoldier_C::IsAim' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, RealWeapon) == 0x0003E1, "Member 'AReS_PawnSoldier_C::RealWeapon' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DisableFire) == 0x0003E2, "Member 'AReS_PawnSoldier_C::DisableFire' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, SeePawns) == 0x0003E8, "Member 'AReS_PawnSoldier_C::SeePawns' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ProxyPawn) == 0x0003F8, "Member 'AReS_PawnSoldier_C::ProxyPawn' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, TargetPawn) == 0x000400, "Member 'AReS_PawnSoldier_C::TargetPawn' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, StateSide) == 0x000408, "Member 'AReS_PawnSoldier_C::StateSide' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, EnemyTarget) == 0x000410, "Member 'AReS_PawnSoldier_C::EnemyTarget' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsCrouch) == 0x000418, "Member 'AReS_PawnSoldier_C::IsCrouch' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsProne) == 0x000419, "Member 'AReS_PawnSoldier_C::IsProne' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Weapon_NoAttackTimer) == 0x00041C, "Member 'AReS_PawnSoldier_C::Weapon_NoAttackTimer' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Weapon_Range) == 0x000420, "Member 'AReS_PawnSoldier_C::Weapon_Range' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Weapon_isFiring) == 0x000424, "Member 'AReS_PawnSoldier_C::Weapon_isFiring' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Weapon_CurrentBurstCount) == 0x000428, "Member 'AReS_PawnSoldier_C::Weapon_CurrentBurstCount' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Weapon_lastShoot) == 0x00042C, "Member 'AReS_PawnSoldier_C::Weapon_lastShoot' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OldWeaponFireRate) == 0x000430, "Member 'AReS_PawnSoldier_C::OldWeaponFireRate' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ProxyPawnSensing) == 0x000438, "Member 'AReS_PawnSoldier_C::ProxyPawnSensing' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, MySquad) == 0x000440, "Member 'AReS_PawnSoldier_C::MySquad' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, FinalRotation) == 0x000448, "Member 'AReS_PawnSoldier_C::FinalRotation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, NetYaw) == 0x00044C, "Member 'AReS_PawnSoldier_C::NetYaw' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, TurnMontage) == 0x000450, "Member 'AReS_PawnSoldier_C::TurnMontage' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, NetPitch) == 0x000458, "Member 'AReS_PawnSoldier_C::NetPitch' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Ammo) == 0x00045C, "Member 'AReS_PawnSoldier_C::Ammo' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, WeaponMods) == 0x000460, "Member 'AReS_PawnSoldier_C::WeaponMods' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, MoveToLocation) == 0x000488, "Member 'AReS_PawnSoldier_C::MoveToLocation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, RagdollGrenade) == 0x000494, "Member 'AReS_PawnSoldier_C::RagdollGrenade' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsSprint) == 0x000495, "Member 'AReS_PawnSoldier_C::IsSprint' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Rank) == 0x000498, "Member 'AReS_PawnSoldier_C::Rank' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DisableMoveTimer) == 0x00049C, "Member 'AReS_PawnSoldier_C::DisableMoveTimer' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DefendPoint) == 0x0004A0, "Member 'AReS_PawnSoldier_C::DefendPoint' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CoverL) == 0x0004A8, "Member 'AReS_PawnSoldier_C::CoverL' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CoverR) == 0x0004A9, "Member 'AReS_PawnSoldier_C::CoverR' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, FireBurstSpread) == 0x0004AC, "Member 'AReS_PawnSoldier_C::FireBurstSpread' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, SoldierBehaviorState) == 0x0004B0, "Member 'AReS_PawnSoldier_C::SoldierBehaviorState' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OldHitLocation) == 0x0004B4, "Member 'AReS_PawnSoldier_C::OldHitLocation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, SkillReactionMultiplayer) == 0x0004C0, "Member 'AReS_PawnSoldier_C::SkillReactionMultiplayer' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, UnitIsMoved) == 0x0004C4, "Member 'AReS_PawnSoldier_C::UnitIsMoved' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, VisionDistance_Weather) == 0x0004C8, "Member 'AReS_PawnSoldier_C::VisionDistance_Weather' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Alarm) == 0x0004CC, "Member 'AReS_PawnSoldier_C::Alarm' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CustomPose) == 0x0004D0, "Member 'AReS_PawnSoldier_C::CustomPose' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Skill_Accuracy) == 0x0004D4, "Member 'AReS_PawnSoldier_C::Skill_Accuracy' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsRendered_) == 0x0004D8, "Member 'AReS_PawnSoldier_C::IsRendered_' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, LockBotRotation) == 0x0004DC, "Member 'AReS_PawnSoldier_C::LockBotRotation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, InVehicle) == 0x0004E8, "Member 'AReS_PawnSoldier_C::InVehicle' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, VehiclePosID) == 0x0004EC, "Member 'AReS_PawnSoldier_C::VehiclePosID' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, VehicleID) == 0x0004F0, "Member 'AReS_PawnSoldier_C::VehicleID' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Vehicle) == 0x0004F8, "Member 'AReS_PawnSoldier_C::Vehicle' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, InVehicleFire) == 0x000500, "Member 'AReS_PawnSoldier_C::InVehicleFire' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, MachineGun) == 0x000508, "Member 'AReS_PawnSoldier_C::MachineGun' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, InMachineGun) == 0x000510, "Member 'AReS_PawnSoldier_C::InMachineGun' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OldWeapon) == 0x000511, "Member 'AReS_PawnSoldier_C::OldWeapon' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, RocketLauncherWeapon) == 0x000512, "Member 'AReS_PawnSoldier_C::RocketLauncherWeapon' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, RocketLauncherAmmo) == 0x000514, "Member 'AReS_PawnSoldier_C::RocketLauncherAmmo' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, FullName) == 0x000518, "Member 'AReS_PawnSoldier_C::FullName' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, SpeakPitch) == 0x000520, "Member 'AReS_PawnSoldier_C::SpeakPitch' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, FollowPlayerPawn) == 0x000528, "Member 'AReS_PawnSoldier_C::FollowPlayerPawn' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DisableProne) == 0x000530, "Member 'AReS_PawnSoldier_C::DisableProne' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, HandsUp) == 0x000531, "Member 'AReS_PawnSoldier_C::HandsUp' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, BotGrenadeName) == 0x000534, "Member 'AReS_PawnSoldier_C::BotGrenadeName' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, BotGrenadeCount) == 0x00053C, "Member 'AReS_PawnSoldier_C::BotGrenadeCount' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, DistanceToTargetPawn) == 0x000540, "Member 'AReS_PawnSoldier_C::DistanceToTargetPawn' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, LastEnemyTarget) == 0x000548, "Member 'AReS_PawnSoldier_C::LastEnemyTarget' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, InDefendPosition) == 0x000550, "Member 'AReS_PawnSoldier_C::InDefendPosition' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, AmmoCargo) == 0x000554, "Member 'AReS_PawnSoldier_C::AmmoCargo' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, MergeMesh) == 0x000558, "Member 'AReS_PawnSoldier_C::MergeMesh' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, BackPackWeaponSocket) == 0x0005A0, "Member 'AReS_PawnSoldier_C::BackPackWeaponSocket' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, WeaponSocket) == 0x0005D0, "Member 'AReS_PawnSoldier_C::WeaponSocket' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OldWeaponMods) == 0x000600, "Member 'AReS_PawnSoldier_C::OldWeaponMods' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OffLOD) == 0x000628, "Member 'AReS_PawnSoldier_C::OffLOD' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, InDefendPositionCover) == 0x000629, "Member 'AReS_PawnSoldier_C::InDefendPositionCover' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OldMoveUnitRotation) == 0x00062C, "Member 'AReS_PawnSoldier_C::OldMoveUnitRotation' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, ReverseMove) == 0x000638, "Member 'AReS_PawnSoldier_C::ReverseMove' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CoverStandL) == 0x000639, "Member 'AReS_PawnSoldier_C::CoverStandL' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CoverStandR) == 0x00063A, "Member 'AReS_PawnSoldier_C::CoverStandR' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IdleRandomMontage) == 0x000640, "Member 'AReS_PawnSoldier_C::IdleRandomMontage' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, HouseDefendActor) == 0x000648, "Member 'AReS_PawnSoldier_C::HouseDefendActor' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, CustomDisableFire) == 0x000650, "Member 'AReS_PawnSoldier_C::CustomDisableFire' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, OffLOD_Long) == 0x000651, "Member 'AReS_PawnSoldier_C::OffLOD_Long' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, LodInteger) == 0x000654, "Member 'AReS_PawnSoldier_C::LodInteger' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsSpecOps) == 0x000658, "Member 'AReS_PawnSoldier_C::IsSpecOps' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, IsSwimm) == 0x000659, "Member 'AReS_PawnSoldier_C::IsSwimm' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, LastAnimMontageTime) == 0x00065C, "Member 'AReS_PawnSoldier_C::LastAnimMontageTime' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Scenario) == 0x000660, "Member 'AReS_PawnSoldier_C::Scenario' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, VoiceID) == 0x000668, "Member 'AReS_PawnSoldier_C::VoiceID' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, InHouse) == 0x00066C, "Member 'AReS_PawnSoldier_C::InHouse' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Secundary_Weapon) == 0x000670, "Member 'AReS_PawnSoldier_C::Secundary_Weapon' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Primary_Weapon) == 0x0006A4, "Member 'AReS_PawnSoldier_C::Primary_Weapon' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, RocketLauncher) == 0x0006D8, "Member 'AReS_PawnSoldier_C::RocketLauncher' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, RagDoll_On) == 0x00070C, "Member 'AReS_PawnSoldier_C::RagDoll_On' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, bKilledInFlight) == 0x00070D, "Member 'AReS_PawnSoldier_C::bKilledInFlight' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, FlightControllerComponent) == 0x000710, "Member 'AReS_PawnSoldier_C::FlightControllerComponent' has a wrong offset!");
+static_assert(offsetof(AReS_PawnSoldier_C, Soldier_MaxSpeed_Bonus) == 0x000718, "Member 'AReS_PawnSoldier_C::Soldier_MaxSpeed_Bonus' has a wrong offset!");
+
+}
+
